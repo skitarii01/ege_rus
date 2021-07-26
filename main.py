@@ -7,7 +7,6 @@ import sqlite3 as sql
 import random
 import os
 from telebot import types
-from txt2img import txt2img
 import bases0
 import requests
 from bs4 import BeautifulSoup
@@ -160,5 +159,9 @@ def text_handler(message):
         elif text == 'посмотреть пароним':
             msg = bot.send_message(chat_id, get_paronim(), reply_markup=mups.greetings)
 
-
-bot.polling()
+while True:
+    try:
+        print('connecting')
+        bot.polling()
+    except Exception:
+        print('smthg is wrong, reconnecting')
